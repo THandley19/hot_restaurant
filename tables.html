@@ -17,8 +17,50 @@
         <p class="lead"></p>
         <hr class="my-4">
         <p>Current Reservations and Waiting List</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">View Tabes</a>
-        <button type="button" class="btn btn-danger">Make Reservation</button>
+        <a class="btn btn-primary btn-lg" href="#" role="button" href="./home.html">Home</a>
+        <a type="button" role="button" class="btn btn-danger" href="./reserver.html">Make Reservation</a>
+      </div>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <p class="lead">Current Reservations</p>
+          <script type="text/javascript">
+            $("#search-btn").on("click", function() {
+              var Reservation = $("#people").val().trim();
+        
+                $.get("/api/tables/", function(data) {
+                    console.log(data);
+                        if (data) {
+                        $("#name").text(data.fname);
+                        $("#phone").text(data.pnumber);
+                        $("#email").text(data.email);
+                        $("#id").text(data.id);
+                        }
+                });
+            });
+        
+          </script>
+        </div>
+      </div>
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <p class="lead">Current Reservations</p>
+          <script type="text/javascript">
+            $("#search-btn").on("click", function() {
+              var waitlist = $("#people").val().trim();
+        
+                $.get("/api/tables/", function(data) {
+                    console.log(data);
+                        if (data) {
+                        $("#name").text(data.name);
+                        $("#Phone").text(data.phone);
+                        $("#email").text(data.email);
+                        $("#id").text(data.id);
+                        }
+                });
+            });
+        
+          </script>
+        </div>
       </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
